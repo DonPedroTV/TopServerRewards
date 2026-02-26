@@ -43,7 +43,5 @@ jobs:
             ## TopServerRewards v${{ steps.version.outputs.VERSION }}
 
             Build pluginu TopServerRewards.
-          files: |
-            target/TopServerRewards.jar
-            target/TopServerRewards-${{ steps.version.outputs.VERSION }}.jar
+          files: target/TopServerRewards.jar
           make_latest: true
