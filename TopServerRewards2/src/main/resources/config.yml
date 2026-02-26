@@ -6,7 +6,17 @@
 api-url: "https://topserver.pl/api_rewards.php"
 
 # ZMIEŃ TO NA IP TWOJEGO SERWERA!
-server-ip: "twoj.serwer.pl"  #<-- ZMIEŃ TO!
+server-ip: "twoj.serwer.pl"
+
+# ════════════════════════════════════════════════════════════════
+#  SPRAWDZANIE AKTUALIZACJI
+# ════════════════════════════════════════════════════════════════
+
+update-checker:
+  # Czy sprawdzać dostępność nowych wersji?
+  enabled: true
+  # Co ile godzin sprawdzać (domyślnie co 6 godzin)
+  check-interval: 6
 
 # ════════════════════════════════════════════════════════════════
 #  KOMENDY
@@ -85,6 +95,8 @@ messages:
   reload-success: "&aPomyślnie przeładowano konfigurację TopServerRewards!"
   reload-no-permission: "&cNie masz uprawnień do przeładowania pluginu!"
 
+  update-available: "&e[TopServerRewards] &aDostepna nowa wersja: &f{new_version} &7(obecna: {current_version})"
+
 # ════════════════════════════════════════════════════════════════
 #  NAGRODY
 # ════════════════════════════════════════════════════════════════
@@ -110,3 +122,10 @@ rewards:
   money:
     enabled: false
     amount: 100.0
+
+# ════════════════════════════════════════════════════════════════
+#  Wersja konfiguracji
+#  NIE ZMIENIAJ!
+# ════════════════════════════════════════════════════════════════
+
+config-version: 1 # - NIE ZMIENIAJ!

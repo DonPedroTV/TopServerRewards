@@ -1,5 +1,5 @@
 name: TopServerRewards
-version: 1.2.2
+version: 1.2.3
 main: pl.topserver.rewards.TopServerRewards
 api-version: 1.20
 author: TopServer.pl

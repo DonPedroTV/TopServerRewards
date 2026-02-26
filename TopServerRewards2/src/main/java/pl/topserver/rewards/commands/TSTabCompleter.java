@@ -1,8 +1,9 @@
-package pl.topserver.rewards;
+package pl.topserver.rewards.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import pl.topserver.rewards.TopServerRewards;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,7 +29,6 @@ public class TSTabCompleter implements TabCompleter {
                 completions.add("reload");
             }
 
-            // Filtruj po wpisanym tekście
             String input = args[0].toLowerCase();
             List<String> filtered = new ArrayList<>();
             for (String c : completions) {

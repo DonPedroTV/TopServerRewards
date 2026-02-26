@@ -11,6 +11,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
+
+import pl.topserver.rewards.commands.ReloadCommand;
+import pl.topserver.rewards.commands.TSTabCompleter;
+import pl.topserver.rewards.updater.ConfigUpdater;
+import pl.topserver.rewards.updater.UpdateChecker;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -31,16 +37,22 @@ public class TopServerRewards extends JavaPlugin {
     private String serverIp;
     private Map<UUID, Long> cooldowns = new HashMap<>();
     private ReloadCommand reloadCommand;
+    private UpdateChecker updateChecker;
     private static final long COOLDOWN_TIME = 5000;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
+
+        new ConfigUpdater(this).update();
+
         loadConfigValues();
 
         // bStats metrics
         int pluginId = 29789;
         Metrics metrics = new Metrics(this, pluginId);
+        metrics.addCustomChart(new SimplePie("plugin_version",
+                () -> getDescription().getVersion()));
 
         reloadCommand = new ReloadCommand(this);
 
@@ -48,6 +60,10 @@ public class TopServerRewards extends JavaPlugin {
         if (tsCmd != null) {
             tsCmd.setTabCompleter(new TSTabCompleter(this));
         }
+
+        // Sprawdzanie aktualizacji
+        updateChecker = new UpdateChecker(this);
+        updateChecker.start();
 
         getLogger().info("TopServerRewards zostal wlaczony!");
         getLogger().info("API URL: " + apiUrl);
@@ -82,6 +98,9 @@ public class TopServerRewards extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if (updateChecker != null) {
+            updateChecker.stop();
+        }
         getLogger().info("TopServerRewards zostal wylaczony!");
     }
 

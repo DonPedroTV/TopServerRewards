@@ -1,7 +1,8 @@
-package pl.topserver.rewards;
+package pl.topserver.rewards.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import pl.topserver.rewards.TopServerRewards;
 
 public class ReloadCommand {
 
@@ -11,10 +12,6 @@ public class ReloadCommand {
         this.plugin = plugin;
     }
 
-    /**
-     * Obsługuje pod-komendę reload.
-     * Dostępna z konsoli i dla graczy z uprawnieniem topserver.admin.
-     */
     public void execute(CommandSender sender) {
         if (!sender.hasPermission("topserver.admin")) {
             String msg = plugin.getConfig().getString("messages.reload-no-permission",
