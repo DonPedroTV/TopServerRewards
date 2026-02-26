@@ -161,7 +161,7 @@ public class UpdateChecker implements Listener {
             TextComponent message = new TextComponent(msgUpdate + " ");
 
             TextComponent clickText = new TextComponent(ChatColor.translateAlternateColorCodes('&',
-                    "&a&l[KLIK]"));
+                    "&a&l[LINK]"));
             clickText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, downloadUrl));
             clickText.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
                     new Text(ChatColor.translateAlternateColorCodes('&',
