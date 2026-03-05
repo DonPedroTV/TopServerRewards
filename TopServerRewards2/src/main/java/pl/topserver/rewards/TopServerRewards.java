@@ -55,6 +55,7 @@ public class TopServerRewards extends JavaPlugin {
 
         PluginCommand tsCmd = getCommand("ts");
         if (tsCmd != null) {
+            tsCmd.setExecutor(this);
             tsCmd.setTabCompleter(new TSTabCompleter(this));
         }
 
